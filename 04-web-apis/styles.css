@@ -1,0 +1,60 @@
+* {
+    font-family: -apple-system;
+}
+
+Body {
+     background-color:whitesmoke;
+}
+
+.grid {
+   display: grid;
+   height: auto;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+   grid-template-rows: 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px 60px;
+}
+
+.title {
+   background-color:  #3c168a;
+   color: whitesmoke;
+   grid-column-start: 1;
+   grid-column-end: 13;
+   grid-row-start: 1;
+   grid-row-end: 2;
+   text-align: center;
+}
+
+#submit {
+    background-color: skyblue;
+    color: whitesmoke;
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 7;
+    grid-row-end: 8;
+    text-align: center;
+    padding: 10px;
+}
+
+#content {
+    grid-column-start: 4;
+    grid-column-end: 10;
+    grid-row-start: 2;
+    grid-row-end: 7;
+    background-color: palegoldenrod;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+
+
+
+.footer {
+    background-color:  #3c168a;
+    color: whitesmoke;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 17;
+    grid-row-end: 18;
+    text-align: center;
+}
