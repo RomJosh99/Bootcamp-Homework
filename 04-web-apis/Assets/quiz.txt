@@ -1,0 +1,5 @@
+ when you enter a page you should see a line about a quiz and a start button. 
+ start button begins quiz with 5 questions and each question has 4 button answers. 
+ clicking answer will take you to next question. should have a timer . 
+ getting answer wrong will subtract 30 seconds. 
+ end page should have a score counter and a name submit button.

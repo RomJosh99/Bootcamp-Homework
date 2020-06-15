@@ -1,5 +1,5 @@
 * {
-    font-family: -apple-system;
+    font-family: Impact;
 }
 
 Body {
@@ -21,6 +21,14 @@ Body {
    grid-row-start: 1;
    grid-row-end: 2;
    text-align: center;
+}
+
+.header {
+    grid-column-start: 6;
+    grid-column-end: 12;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    color: black;
 }
 
 #submit {
@@ -45,7 +53,12 @@ Body {
 
 }
 
-
+.header {
+    grid-column-start:6;
+    grid-column-end: 7;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
 
 
 

@@ -15,10 +15,17 @@
 
       <div class="title">Code Quiz!</div>
 
-      <div class="content" ></div>
+      <div class="content"></div>
+
+    <div class="header" id="question"></div>
+
+    <button onclick="answeronButton1()" id="answer"></button>
+    <button onclick="answeroneButton1()" id="answer2"></button>
+    <button onclick="answeroneButton1()" id="answer3"></button>
+    <button onclick="answeroneButton1()" id="answer4"></button>
   <!-- INPUTS -->
   <div id="quiz"></div>
-   <button id="submit">Start Quiz</button>
+   <button onclick="startQuiz()" id="submit">Start Quiz</button>
      <div id="results"></div>
   <!-- FOOTER -->
       <div class="footer">Code Quiz!</div>
@@ -26,7 +33,9 @@
       </div>
 
     <!-- Optional JavaScript -->
-    <link href="script.js">
+    
+    <script src="script.js"></script>     
+    
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
