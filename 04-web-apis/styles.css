@@ -23,9 +23,36 @@ Body {
    text-align: center;
 }
 
+#answer {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 8;
+    grid-row-end:9;
+}
+#answer2 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 9;
+    grid-row-end:10;
+}
+#answer3 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 10;
+    grid-row-end:11;
+}
+#answer4 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 11;
+    grid-row-end:12;
+}
+
+
+
 .header {
-    grid-column-start: 6;
-    grid-column-end: 12;
+    grid-column-start: 5;
+    grid-column-end: 6;
     grid-row-start: 2;
     grid-row-end: 3;
     color: black;
@@ -40,6 +67,29 @@ Body {
     grid-row-end: 8;
     text-align: center;
     padding: 10px;
+}
+
+#nextQ1 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 14;
+    grid-row-end:15;
+}
+#nextQ2 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    grid-row-start: 14;
+    grid-row-end:15;
+}#nextQ3 {
+    grid-column-start: 7;
+    grid-column-end: 8;
+    grid-row-start: 14;
+    grid-row-end:15;
+}#nextQ4 {
+    grid-column-start: 8;
+    grid-column-end: 9;
+    grid-row-start: 14;
+    grid-row-end:15;
 }
 
 #content {
