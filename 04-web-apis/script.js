@@ -1,83 +1,152 @@
-var quizQuestions = {
-    questionOne:"Commonly used data types do NOT include.", 
-    oneAnswers: ["Strings","Booleans","Alerts","Numbers"],
-    answerOne:"Booleans",
+const start = document.getElementById("start");
+const quiz = document.getElementById("quiz");
+const question = document.getElementById("question");
+const choiceA = document.getElementById("A");
+const choiceB = document.getElementById("B");
+const choiceC = document.getElementById("C");
+const choiceD = document.getElementById("D");
+const counter = document.getElementById("counter");
+const progress = document.getElementById("progress");
+const scoreDiv = document.getElementById("scoreContainer");
 
-    questionTwo:"The condition in an if / else statement is enclosed within.", 
-    twoAnswers: ["Quotes","Curly brackets","Parenthesis","Square brackets"],
-    answerTwo:"2",
 
-    questionThree:"The condition in an AAAAAAA / else statement is enclosed within.", 
-    threeAnswers: ["Quotes","Curly brackets","Parenthesis","Square brackets"],
-    answerThree:"2",
+let questions = [{
+    question: "Commonly used data types DO NOT include:",
+    choiceA: "strings",
+    choiceB: "booleans",
+    choiceC: "alerts",
+    choiceD: "numbers",
+    correct: "C"
+}, {
+    question: "Arrays in JavaScript can be used to store _",
+    choiceA: "Numbers and strings",
+    choiceB: "other arrays",
+    choiceC: "booleans",
+    choiceD: "all of the above",
+    correct: "A"
+}, {
+    question: "String values must be enclosed within_ when being assigned to variables",
+    choiceA: "comments",
+    choiceB: "currly brackets",
+    choiceC: "quotes",
+    choiceD: "paranthesis",
+    correct: "D"
+}, {
+    question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choiceA: "Javascript",
+    choiceB: "terminal/bash",
+    choiceC: "for loops",
+    choiceD: "console.log",
+    correct: "D"
+}, {
+    question: "The condition in an if/else statement is enclosed within_",
+    choiceA: "quotes",
+    choiceB: "curly brackets",
+    choiceC: "paranthesis",
+    choiceD: "square brackets",
+    correct: "B"
+}];
 
-    questionFour:"The condition in an if BBBBBBBBB/ else statement is enclosed within.", 
-    fourAnswers: ["Quotes","Curly brackets","Parenthesis","Square brackets"],
-    answerFour:"2",
 
-    questionFive:"The condition in an if  CCCCCCCCC/ else statement is enclosed within.", 
-    fiveAnswers: ["Quotes","Curly brackets","Parenthesis","Square brackets"],
-    answerFive:"2",
+
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+let count = 0;
+const questionTime = 10;
+const gaugeWidth = 150;
+const gaugeUnit = gaugeWidth / questionTime;
+let TIMER;
+let score = 0;
+
+
+function renderQuestion() {
+    let q = questions[runningQuestion];
+
+    question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
 }
-var total_seconds = 30 * 1;
-var c_minutes = parseInt(total_seconds / 60);
-var c_seconds = parseInt(total_seconds % 60);
-var timer;
-var saveName;
+
+start.addEventListener("click", startQuiz);
 
 
-function testTimer() {
-
-}
-
-
-// Start Quiz //
 function startQuiz() {
-    document.getElementById("question").innerHTML = quizQuestions.questionOne;
-    document.getElementById("answer").innerHTML = quizQuestions.oneAnswers[0];
-    document.getElementById("answer2").innerHTML = quizQuestions.oneAnswers[1];
-    document.getElementById("answer3").innerHTML = quizQuestions.oneAnswers[2];
-    document.getElementById("answer4").innerHTML = quizQuestions.oneAnswers[3];
-    document.getElementById("answerButton2").innerHTML = quizQuestions.answerOne[3];
+    start.style.display = "none";
+    renderQuestion();
+    quiz.style.display = "block";
+    renderProgress();
+    renderCounter();
+    TIMER = setInterval(renderCounter, 1000);
 }
 
-// Questions //
-function nextQuiz() {
-    document.getElementById("question").innerHTML = quizQuestions.questionTwo;
-    document.getElementById("answer").innerHTML = quizQuestions.twoAnswers[0];
-    document.getElementById("answer2").innerHTML = quizQuestions.twoAnswers[1];
-    document.getElementById("answer3").innerHTML = quizQuestions.twoAnswers[2];
-    document.getElementById("answer4").innerHTML = quizQuestions.twoAnswers[3];
-    document.getElementById("answerButton2").innerHTML = quizQuestions.answerTwo[3];
 
+function renderProgress() {
+    for (let qIndex = 0; qIndex <= lastQuestion; qIndex++) {
+        progress.innerHTML += "<div class='prog' id=" + qIndex + "></div>";
+    }
 }
 
-function nextQuiz2() {
-    document.getElementById("question").innerHTML = quizQuestions.questionThree;
-    document.getElementById("answer").innerHTML = quizQuestions.threeAnswers[0];
-    document.getElementById("answer2").innerHTML = quizQuestions.threeAnswers[1];
-    document.getElementById("answer3").innerHTML = quizQuestions.threeAnswers[2];
-    document.getElementById("answer4").innerHTML = quizQuestions.threeAnswers[3];
-    document.getElementById("answerButton2").innerHTML = quizQuestions.answerThree[3];
 
+function renderCounter() {
+    if (count <= questionTime) {
+        counter.innerHTML = count;
+        count++
+    } else {
+        count = 0;
+
+        answerIsWrong();
+        if (runningQuestion < lastQuestion) {
+            runningQuestion++;
+            renderQuestion();
+        } else {
+
+            clearInterval(TIMER);
+            scoreRender();
+        }
+    }
 }
 
-function nextQuiz3() {
-    document.getElementById("question").innerHTML = quizQuestions.questionFour;
-    document.getElementById("answer").innerHTML = quizQuestions.fourAnswers[0];
-    document.getElementById("answer2").innerHTML = quizQuestions.fourAnswers[1];
-    document.getElementById("answer3").innerHTML = quizQuestions.fourAnswers[2];
-    document.getElementById("answer4").innerHTML = quizQuestions.fourAnswers[3];
-    document.getElementById("answerButton2").innerHTML = quizQuestions.answerFour[3];
 
+
+function checkAnswer(answer) {
+    if (answer == questions[runningQuestion].correct) {
+
+        score++;
+
+        answerIsCorrect();
+    } else {
+
+        answerIsWrong();
+    }
+    count = 0;
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else {
+
+        clearInterval(TIMER);
+        scoreRender();
+    }
 }
 
-function nextQuiz4() {
-    document.getElementById("question").innerHTML = quizQuestions.questionFive;
-    document.getElementById("answer").innerHTML = quizQuestions.fiveAnswers[0];
-    document.getElementById("answer2").innerHTML = quizQuestions.fiveAnswers[1];
-    document.getElementById("answer3").innerHTML = quizQuestions.fiveAnswers[2];
-    document.getElementById("answer4").innerHTML = quizQuestions.fiveAnswers[3];
-    document.getElementById("answerButton2").innerHTML = quizQuestions.answerFive[3];
 
+function answerIsCorrect() {
+    document.getElementById(runningQuestion);
+}
+
+
+function answerIsWrong() {
+    document.getElementById(runningQuestion);
+}
+
+
+function scoreRender() {
+    scoreDiv.style.display = "block";
+
+
+    const scorePerCent = Math.round(100 * score / questions.length);
+
+    scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
 }

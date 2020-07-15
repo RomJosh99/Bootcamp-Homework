@@ -1,0 +1,156 @@
+body {
+    font-family: georgia;
+    font-weight: 400;
+    color: #1a1a1a;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+}
+
+.header {
+    background-color: #1a1a1a;
+    color: whitesmoke;
+    top: 0;
+    text-align: center;
+    height: 100px;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    position: initial;
+}
+
+#start {
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    left: 300px;
+    top: 50px;
+    grid-column-start: 5;
+    grid-column-end: 8;
+    grid-row-start: 5;
+    grid-row-end: 6;
+
+}
+
+.btn.btn-primary {
+    grid-column-start: 5;
+    grid-column-end: 8;
+    grid-row-start: 5;
+    grid-row-end: 6;
+}
+
+#question {
+    width: 500px;
+    height: 125px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#question p {
+    margin: 0;
+    padding: 15px;
+    font-size: 1.25em;
+}
+
+#choices {
+    width: 480px;
+    position: absolute;
+    right: 0;
+    top: 125px;
+    padding: 10px
+}
+
+.choice {
+    display: inline-block;
+    width: 135px;
+    text-align: center;
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#timer {
+    position: absolute;
+    height: 100px;
+    width: 200px;
+    bottom: 0px;
+    text-align: center;
+}
+
+#counter {
+    font-size: 3em;
+}
+
+/* CONTAINER */
+#container {
+
+    position: relative;
+    left: 30px;
+
+    grid-column-start: 5;
+    grid-column-end: 9;
+    grid-row-start: 7;
+    grid-row-end: 16;
+}
+
+#scoreContainer {
+    margin: 20px auto;
+    height: 300px;
+    width: 700px;
+    position: relative;
+    display: none;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 15;
+    grid-row-end: 16;
+}
+
+#scoreContainer img {
+    position: absolute;
+    top: 100px;
+    left: 325px;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 15;
+    grid-row-end: 16;
+}
+
+#scoreContainer p {
+    position: absolute;
+    display: block;
+    width: 59px;
+    height: 59px;
+    top: 130px;
+    left: 325px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 19;
+    grid-row-end: 20;
+
+}
+
+.footer {
+    bottom: 0;
+    color: whitesmoke;
+    background-color: #1a1a1a;
+    text-align: center;
+    height: 200px;
+    grid-column-start: 1;
+    grid-column-end: 13;
+    grid-row-start: 19;
+    grid-row-end: 20;
+    position: relative;
+}
